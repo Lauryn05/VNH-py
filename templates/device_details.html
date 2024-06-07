@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Device Details</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/devices">Devices</a></li>
+                <li><a href="/alerts">Alerts</a></li>
+            </ul>
+        </nav>
+        <div>
+            <p>ID: {{ device._id }}</p>
+            <p>OID: {{ device.oid }}</p>
+            <p>Value: {{ device.value }}</p>
+            <form action="/configure_device/{{ device._id }}" method="post">
+                <label for="value">New Value:</label>
+                <input type="text" id="value" name="value">
+                <button type="submit">Configure</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
