@@ -1,3 +1,4 @@
+import time
 from db import mongo
 
 def send_alert(device_id, alert_message):
