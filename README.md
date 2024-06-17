@@ -42,6 +42,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
  - config.py: Configuration file for the application.
  - db.py: MongoDB interactions and operations
  - snmp_manager.py: SNMP management and device discovery functions.
+ - snmp_agent.py: SNMP agent implementation.
  - manage.py: Script for managing the application (eg., database migrations)
  - templates/: Directory containing HTML templates for the web interface.
     dashboard.html: Dashboard view.
