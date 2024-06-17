@@ -3,11 +3,15 @@ from db import mongo
 from snmp_manager import discover_devices, configure_device, fetch_device_data
 from alerts import send_alert
 from analyze import analyze_data
-import config
+from config import Config
+import logging
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = config.MONGO_URI
+app.config['MONGO_URI'] = Config.MONGO_URI
 mongo.init_app(app)
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/')
 def home():
@@ -15,18 +19,30 @@ def home():
 
 @app.route('/devices')
 def devices():
-    devices = list(mongo.db.devices.find())
-    return render_template('devices.html', devices=devices)
+    try:
+        devices = list(mongo.db.devices.find())
+        return render_template('devices.html', devices=devices)
+    except Exception as e:
+        logging.error(f"Error fetching devices: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/device/<device_id>')
 def device_details(device_id):
-    device = mongo.db.devices.find_one({'_id': device_id})
-    return render_template('device_details.html', device=device)
+    try:
+        device = mongo.db.devices.find_one({'_id': device_id})
+        return render_template('device_details.html', device=device)
+    except Exception as e:
+        logging.error(f"Error fetching device details for {device_id}: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/alerts')
 def alerts():
-    alerts = list(mongo.db.alerts.find())
-    return render_template('alerts.html', alerts=alerts)
+    try:
+        alerts = list(mongo.db.alerts.find())
+        return render_template('alerts.html', alerts=alerts)
+    except Exception as e:
+        logging.error(f"Error fetching alerts: {e}")
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/discover_devices', methods=['GET'])
 def discover():
