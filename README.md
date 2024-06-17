@@ -11,31 +11,31 @@ This project is a Python-based Network Management Tool that provides SNMP device
    - Troubleshooting
 
 ## Features
-    - SNMP device discovery and monitoring
-    - MIB integration
-    - MongoDB for storage
-    - Web interface for managing devices and viewing alerts
-    - Device status analysis and alert system (sends emails using mailjet API)
+ - SNMP device discovery and monitoring
+ - MIB integration
+ - MongoDB for storage
+ - Web interface for managing devices and viewing alerts
+ - Device status analysis and alert system (sends emails using mailjet API)
 
 ## Project Structyre
-VNH/
-├── app.py
-├── alerts.py
-├── analyze.py
-├── config.py
-├── db.py
-├── snmp_manager.py
-├── manage.py
-├── templates/
-│   ├── dashboard.html
-│   ├── devices.html
-│   ├── device_details.html
-│   └── alerts.html
-├── mibs/
-│   ├── DEMO-MIB.mib
-│   └── DEMO-MIB.py
-├── requirements.txt
-└── README.md
+    VNH/
+    ├── app.py
+    ├── alerts.py
+    ├── analyze.py
+    ├── config.py
+    ├── db.py
+    ├── snmp_manager.py
+    ├── manage.py
+    ├── templates/
+    │   ├── dashboard.html
+    │   ├── devices.html
+    │   ├── device_details.html
+    │   └── alerts.html
+    ├── mibs/
+    │   ├── DEMO-MIB.mib
+    │   └── DEMO-MIB.py
+    ├── requirements.txt
+    └── README.md
  - app.py: Entry point for the Flask application.
  - alerts.py: Script for managing and sending alerts.
  - analyze.py: Script for analyzing device data and generating insights.
