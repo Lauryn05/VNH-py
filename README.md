@@ -2,13 +2,13 @@
 This project is a Python-based Network Management Tool that provides SNMP device discovery, monitoring, and management functionalities. It uses PySNMP for SNMP operations, PyMongo for MongoDB interactions, and Flask for the web interface.
 
 ## Table of Contents
-   - [Features](Features)
-   - [Project Sructure](ProjectStructure)
-   - [Installation](Installation)
-   - [Usage](Usage)
-   - [Configuration](Configuration)
-   - [Customizable MIB files](CustomizableMIBfiles)
-   - [Documentation](Documentation)
+   - Features
+   - Project Sructure
+   - Installation
+   - Usage
+   - Configuration
+   - Customizable MIB files
+   - Documentation
 
 ## Features
  - SNMP device discovery and monitoring
