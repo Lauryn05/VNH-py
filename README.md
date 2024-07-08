@@ -57,7 +57,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
 
 ## Installation
  - Clone this repository into your local device
-     git clone http://github.com/Lauryn05/VNH-py
+     -git clone http://github.com/Lauryn05/VNH-py
  - This tool requires MongoDB Atlas for data storage so ensure you have an acount with Mongo DB and have a database for network management.
  - Change the information in config.py.
  - Create an account in MailjetAPI and change the data in config.py and alerts.py.
