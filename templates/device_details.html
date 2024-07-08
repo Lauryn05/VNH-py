@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Device Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Device Details</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Dashboard</a></li>
-                <li><a href="/devices">Devices</a></li>
-                <li><a href="/alerts">Alerts</a></li>
+    <div class="min-h-screen flex flex-col bg-zinc-700 text-white">
+        <header class="bg-gradient-to-r from-purple-500 to-pink-500 p-4 flex items-center justify-between">
+            <h1 class="text-white text-lg font-bold">Device Details</h1>
+        </header>
+        <nav class="bg-gradient-to-r from-purple-500 to-pink-500 p-4 flex justify-around">
+            <ul class="flex space-x-20">
+                <li><a href="/" class="text-white">Dashboard</a></li>
+                <li><a href="/devices" class="text-white">Devices</a></li>
+                <li><a href="/alerts" class="text-white">Alerts</a></li>
             </ul>
         </nav>
-        <div>
-            <p><strong>ID:</strong> {{ device._id }}</p>
-            <p><strong>Device ID:</strong> {{ device.device_id }}</p>
-            <p><strong>Name:</strong> {{ device.name }}</p>
-            <p><strong>IP Address:</strong> {{ device.ip_address }}</p>
-            <p><strong>Status:</strong> {{ device.status }}</p>
-            <p><strong>Last Updated:</strong> {{ device.last_updated }}</p>
+        <div class="p-4">
+            <p class="mb-4"><strong>ID:</strong> {{ device._id }}</p>
+            <p class="mb-4"><strong>Device ID:</strong> {{ device.device_id }}</p>
+            <p class="mb-4"><strong>Name:</strong> {{ device.name }}</p>
+            <p class="mb-4"><strong>IP Address:</strong> {{ device.ip_address }}</p>
+            <p class="mb-4"><strong>Status:</strong> {{ device.status }}</p>
+            <p class="mb-4"><strong>Last Updated:</strong> {{ device.last_updated }}</p>
             <form id="configure-form">
-                <div class="form-group">
+                <div class="form-group mb-4">
                     <label for="hostname">Hostname:</label>
-                    <input type="text" id="hostname" name="hostname" value="{{ device.hostname }}">
+                    <input type="text" id="hostname" name="hostname" value="{{ device.hostname }}" class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-4">
                     <label for="ip_address">IP Address:</label>
-                    <input type="text" id="ip_address" name="ip_address" value="{{ device.ip_address }}">
+                    <input type="text" id="ip_address" name="ip_address" value="{{ device.ip_address }}" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Configure</button>
             </form>

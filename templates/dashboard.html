@@ -10,7 +10,7 @@
 <body>
     <div class="min-h-screen flex flex-col bg-zinc-700 text-white">
         <header class="bg-gradient-to-r from-purple-500 to-pink-500 p-4 flex items-center justify-between">
-            <img src="logo.jpeg" alt="VelocityNethub Logo" class="h-10 w-10 ml-4" loading="lazy">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="VelocityNethub Logo" class="h-20 w-22 ml-4" loading="lazy">
             <h1 class="text-white text-lg font-bold">VelocityNetHub Dashboard</h1>
         </header>
         <nav class="bg-gradient-to-r from-purple-500 to-pink-500 p-4 flex justify-around">
@@ -20,6 +20,20 @@
         <main class="p-4 text-center">
             <h2 class="text-2xl font-bold">Welcome to the VelocityNetHub Dashboard</h2>
             <p class="mt-2">Use the navigation to view devices and alerts.</p>
+            <div class="mt-4">
+                <h3 class="text-xl font-bold">Device Performance Metrics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    {% for metric in metrics %}
+                        <div class="bg-zinc-800 p-4 rounded-lg shadow-lg">
+                            <h4 class="text-lg font-bold">Device ID: {{ metric.device_id }}</h4>
+                            <p><strong>CPU Usage:</strong> {{ metric.cpu_usage }}%</p>
+                            <p><strong>Memory Usage:</strong> {{ metric.memory_usage }}%</p>
+                            <p><strong>Disk Usage:</strong> {{ metric.disk_usage }}%</p>
+                            <p><strong>Last Updated:</strong> {{ metric.timestamp }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </main>
     </div>
 </body>
