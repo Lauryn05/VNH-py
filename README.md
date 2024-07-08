@@ -8,7 +8,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
    - Usage
    - Configuration
    - Customizable MIB files
-   - Troubleshooting
+   - Documentation
 
 ## Features
  - SNMP device discovery and monitoring
@@ -81,5 +81,12 @@ Files that require specific configurations are:
  - sample.py: Use this file to verify database connection and data input.
 
 ## Customizable MIB files
-The MIB agent can be ab
+ - The MIB file can be loaded into the agent and from there system information is retrieved. The MIB file in this project is contained in the mibs folder.
+ - The DEMO-MIB.py file is loaded using the mibBuilder.addMibSources(builder.DirMibSource(mib_dir)).
+ - To convert the .mib or .txt file to a python module, use the tool smitranslate which is contained in smitools (apt install smitools).
+ - If the process fails on windows, download an Ubuntu subsystems for Windows and use it to install the tools and translate the MIB file to a python module.
 
+### Documentation
+ - VNH Proposal [VNH-Proposal.pdf]
+ - VNH System Diagrams []
+ - VNH Final Report [] 
