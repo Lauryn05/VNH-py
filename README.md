@@ -36,14 +36,14 @@ This project is a Python-based Network Management Tool that provides SNMP device
     │   └── DEMO-MIB.py
     ├── requirements.txt
     └── README.md
- - app.py: Entry point for the Flask application.
- - alerts.py: Script for managing and sending alerts.
- - analyze.py: Script for analyzing device data and generating insights.
- - config.py: Configuration file for the application.
- - db.py: MongoDB interactions and operations
- - snmp_manager.py: SNMP management and device discovery functions.
+ - [app.py](https://github.com/Lauryn05/VNH-py/blob/main/app.py): Entry point for the Flask application.
+ - [alerts.py](https://github.com/Lauryn05/VNH-py/blob/main/alerts.py): Script for managing and sending alerts.
+ - [analyze.py](https://github.com/Lauryn05/VNH-py/blob/main/analyze.py): Script for analyzing device data and generating insights.
+ - [config.py](https://github.com/Lauryn05/VNH-py/blob/main/config.py): Configuration file for the application.
+ - [db.py](https://github.com/Lauryn05/VNH-py/blob/main/db.py): MongoDB interactions and operations
+ - [snmp_manager.py](https://github.com/Lauryn05/VNH-py/blob/main/snmp_manager.py): SNMP management and device discovery functions.
  - snmp_agent_x.py: SNMP agent implementation (Linux or Windows).
- - manage.py: Script for managing the application (eg., database migrations)
+ - [manage.py](https://github.com/Lauryn05/VNH-py/blob/main/manage.py): Script for managing the application (eg., database migrations)
  - templates/: Directory containing HTML templates for the web interface.
     dashboard.html: Dashboard view.
     devices.html: Device list view.
