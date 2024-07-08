@@ -24,7 +24,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
     ├── analyze.py
     ├── config.py
     ├── db.py
-    ├── snmp_manager.py
+    ├── snmp_manager-x.py
     ├── manage.py
     ├── templates/
     │   ├── dashboard.html
@@ -56,8 +56,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
  - README.md: Project documentation.
 
 ## Installation
- - Clone this repository into your local device
-     -git clone http://github.com/Lauryn05/VNH-py
+ - Clone this repository into your local device (git clone http://github.com/Lauryn05/VNH-py)
  - This tool requires MongoDB Atlas for data storage so ensure you have an acount with Mongo DB and have a database for network management.
  - Change the information in config.py.
  - Create an account in MailjetAPI and change the data in config.py and alerts.py.
@@ -72,3 +71,15 @@ This project is a Python-based Network Management Tool that provides SNMP device
  - Running the flask app also triggers the analysis module which checks if set thresholds have been surpassed then sends alerts to the network administrator though email using Mailjet API.
  - The devices are then displayed in the devices page of the dashboard and when one selects a specific device, they can be able to view more device details and configure its hostname and IP address.
  - The network administrator can also be able to view the alerts sent on the alerts page of the dashboard.
+
+## Configuration
+Files that require specific configurations are:
+ - snmp-agent-x.py: Whether using the linux or windows agent, change the IP address of the MANAGER_URL and UDPTransportTarget to that the manager is listening on.
+ - alerts.py: Change the email from which the alert is from to the Email used to create an account for Mailjet API.
+ - analyze.py: Change the thresholds to that of your specific situation (cpu, disk, memory)
+ - config.py: Edit the connection string used for connecting to your database, mailjet API key and API secret, and the alert imail to which the email is sent to.
+ - sample.py: Use this file to verify database connection and data input.
+
+## Customizable MIB files
+The MIB agent can be ab
+
