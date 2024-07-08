@@ -87,6 +87,6 @@ Files that require specific configurations are:
  - If the process fails on windows, download an Ubuntu subsystems for Windows and use it to install the tools and translate the MIB file to a python module.
 
 ### Documentation
- - VNH Proposal [VNH-Proposal.pdf]
+ - (VNH Proposal)[VNH-Proposal.pdf]
  - VNH System Diagrams []
  - VNH Final Report [] 
