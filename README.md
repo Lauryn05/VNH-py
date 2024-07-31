@@ -8,7 +8,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
    - Usage
    - Configuration
    - Customizable MIB files
-   - Troubleshooting
+   - Documentation
 
 ## Features
  - SNMP device discovery and monitoring
@@ -17,7 +17,7 @@ This project is a Python-based Network Management Tool that provides SNMP device
  - Web interface for managing devices and viewing alerts
  - Device status analysis and alert system (sends emails using mailjet API)
 
-## Project Structyre
+## Project Structure
     VNH/
     ├── app.py
     ├── alerts.py
@@ -36,14 +36,14 @@ This project is a Python-based Network Management Tool that provides SNMP device
     │   └── DEMO-MIB.py
     ├── requirements.txt
     └── README.md
- - app.py: Entry point for the Flask application.
- - alerts.py: Script for managing and sending alerts.
- - analyze.py: Script for analyzing device data and generating insights.
- - config.py: Configuration file for the application.
- - db.py: MongoDB interactions and operations
- - snmp_manager.py: SNMP management and device discovery functions.
+ - [app.py](https://github.com/Lauryn05/VNH-py/blob/main/app.py): Entry point for the Flask application.
+ - [alerts.py](https://github.com/Lauryn05/VNH-py/blob/main/alerts.py): Script for managing and sending alerts.
+ - [analyze.py](https://github.com/Lauryn05/VNH-py/blob/main/analyze.py): Script for analyzing device data and generating insights.
+ - [config.py](https://github.com/Lauryn05/VNH-py/blob/main/config.py): Configuration file for the application.
+ - [db.py](https://github.com/Lauryn05/VNH-py/blob/main/db.py): MongoDB interactions and operations
+ - [snmp_manager.py](https://github.com/Lauryn05/VNH-py/blob/main/snmp_manager.py): SNMP management and device discovery functions.
  - snmp_agent_x.py: SNMP agent implementation (Linux or Windows).
- - manage.py: Script for managing the application (eg., database migrations)
+ - [manage.py](https://github.com/Lauryn05/VNH-py/blob/main/manage.py): Script for managing the application (eg., database migrations)
  - templates/: Directory containing HTML templates for the web interface.
     dashboard.html: Dashboard view.
     devices.html: Device list view.
@@ -85,5 +85,12 @@ Files that require specific configurations are:
    -Restart snpd (systemctl restart snmpd)
    -Test the connectivity (snmpget -v2c -c public 10.0.2.15 1.3.6.1.2.1.1.5.0)
 ## Customizable MIB files
-The MIB agent can be ab
+ - The MIB file can be loaded into the agent and from there system information is retrieved. The MIB file in this project is contained in the mibs folder.
+ - The DEMO-MIB.py file is loaded using the mibBuilder.addMibSources(builder.DirMibSource(mib_dir)).
+ - To convert the .mib or .txt file to a python module, use the tool smitranslate which is contained in smitools (apt install smitools).
+ - If the process fails on windows, download an Ubuntu subsystems for Windows and use it to install the tools and translate the MIB file to a python module.
 
+### Documentation
+ - [VNH Proposal](VNH-Proposal.pdf)
+ - VNH System Diagrams []
+ - VNH Final Report [] 
