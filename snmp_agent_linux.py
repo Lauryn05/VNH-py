@@ -45,7 +45,7 @@ def get_snmp_data(oid):
         iterator = getCmd(
             SnmpEngine(),  # Create SNMP engine instance
             CommunityData('public'),  # Set SNMP community string
-            UdpTransportTarget(('192.168.1.3', 161)),  # Set SNMP manager IP and port
+            UdpTransportTarget(('10.0.2.15', 161)),  # Set managed device IP and port
             ContextData(),  # Create SNMP context data
             ObjectType(ObjectIdentity(oid))  # Define SNMP object type using OID
         )

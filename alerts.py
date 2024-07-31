@@ -2,7 +2,7 @@ import time
 from mailjet_rest import Client
 from db import mongo
 from bson import ObjectId
-from config import Config  # Ensure Config is imported correctly
+from config import Config
 
 def send_alert(device_id, alert_message):
     # Check if an alert with the same device_id and message already exists

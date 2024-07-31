@@ -102,19 +102,10 @@ def discover():
     return jsonify(result), 200  # Return JSON response with discovery result and status code 200
 
 @app.route('/configure_device/<device_id>', methods=['POST'])
-def configure(device_id):
-    try:
-        data = request.get_json()  # Get JSON data from request body
-        if not data or 'hostname' not in data or 'ip_address' not in data or 'oid' not in data:
-            logging.error("Invalid data received")  # Log error if invalid data received
-            return jsonify({"error": "Invalid data"}), 400  # Return JSON response with error message and status code 400
-        
-        result = configure_device(device_id, data)  # Call configure_device function with device_id and data
-        return jsonify(result), 200  # Return JSON response with configuration result and status code 200
-    
-    except Exception as e:
-        logging.error(f"Error configuring device {device_id}: {e}")  # Log error if configuring device fails
-        return jsonify({"error": str(e)}), 500  # Return JSON response with error message and status code 500
+def configure_device_route(device_id):
+    data = request.json
+    result = configure_device(device_id, data)
+    return jsonify(result), 200
 
 @app.route('/device_data/<device_id>', methods=['GET'])
 def device_data(device_id):

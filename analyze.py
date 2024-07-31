@@ -1,5 +1,5 @@
 from alerts import send_alert  # Importing send_alert function from alerts.py
-from db import mongo  # Assuming you have MongoDB integration
+from db import mongo
 from bson import ObjectId
 
 CPU_THRESHOLD = 80.0  # threshold for CPU usage

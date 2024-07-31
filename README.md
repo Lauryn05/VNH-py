@@ -79,7 +79,11 @@ Files that require specific configurations are:
  - analyze.py: Change the thresholds to that of your specific situation (cpu, disk, memory)
  - config.py: Edit the connection string used for connecting to your database, mailjet API key and API secret, and the alert imail to which the email is sent to.
  - sample.py: Use this file to verify database connection and data input.
-
+ - For Linux, ensure you change the file /etc/snmp/snmpd.conf as below to ensure that the SNMP agent listens on all network interfaces and accepts requests from remote devices 
+   -The field agentaddress 127.0.0.1,[::1]
+   -To agentaddress 0.0.0.0,[::]
+   -Restart snpd (systemctl restart snmpd)
+   -Test the connectivity (snmpget -v2c -c public 10.0.2.15 1.3.6.1.2.1.1.5.0)
 ## Customizable MIB files
 The MIB agent can be ab
 

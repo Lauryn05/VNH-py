@@ -43,28 +43,46 @@ def discover_devices():
 
 def configure_device(device_id, data):
     try:
-        target = ObjectIdentity(data['oid'])  # Constructing SNMP ObjectIdentity from received OID
-        var_binds = (ObjectType(target, data['value']),)  # Creating SNMP var_binds with target and value
+        # Perform SNMP set operation for hostname
+        if 'hostname' in data:
+            hostname_target = ObjectIdentity('1.3.6.1.2.1.1.5.0')  # OID for sysName
+            hostname_var_binds = (ObjectType(hostname_target, OctetString(data['hostname'])),)  # Set hostname value
 
-        # Perform SNMP set operation to configure device
-        errorIndication, errorStatus, errorIndex, varBinds = setCmd(
-            SnmpEngine(),
-            CommunityData('private'),
-            UdpTransportTarget(('demo.snmplabs.com', 161)),
-            ContextData(),
-            *var_binds
-        )
+            hostname_errorIndication, hostname_errorStatus, hostname_errorIndex, hostname_varBinds = setCmd(
+                SnmpEngine(),
+                CommunityData('private'),
+                UdpTransportTarget(('demo.snmplabs.com', 161)),
+                ContextData(),
+                *hostname_var_binds
+            )
 
-        if errorIndication or errorStatus:
-            return {'error': str(errorIndication or errorStatus)}  # Return error if SNMP operation fails
+            if hostname_errorIndication or hostname_errorStatus:
+                return {'error': str(hostname_errorIndication or hostname_errorStatus)}  # Return error if SNMP operation fails
 
-        mongo.db.devices.update_one({'_id': ObjectId(device_id)}, {'$set': {'configured_value': data['value']}})
+        # Perform SNMP set operation for IP address
+        if 'ip_address' in data:
+            ip_target = ObjectIdentity('1.3.6.1.4.1.9.2.1.1.7.0')  # Example OID for IP address
+            ip_var_binds = (ObjectType(ip_target, IpAddress(data['ip_address'])),)  # Set IP address value
+
+            ip_errorIndication, ip_errorStatus, ip_errorIndex, ip_varBinds = setCmd(
+                SnmpEngine(),
+                CommunityData('private'),
+                UdpTransportTarget(('demo.snmplabs.com', 161)),
+                ContextData(),
+                *ip_var_binds
+            )
+
+            if ip_errorIndication or ip_errorStatus:
+                return {'error': str(ip_errorIndication or ip_errorStatus)}  # Return error if SNMP operation fails
+
         # Update MongoDB with configured value for the device
+        mongo.db.devices.update_one({'_id': ObjectId(device_id)}, {'$set': {'configured_value': data}})
 
         return {'message': f'Device {device_id} configured successfully'}  # Return success message
     
     except Exception as e:
         return {'error': f'Failed to configure device {device_id}: {e}'}  # Return error if exception occurs
+
 
 @app.route('/receive_metrics', methods=['POST'])
 def receive_metrics():
