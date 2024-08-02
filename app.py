@@ -1,22 +1,20 @@
 from flask import Flask, jsonify, request, render_template  # Necessary Flask modules
 from db import mongo, init_db  # MongoDB connection and initialization function
-from snmp_manager import discover_devices, configure_device, receive_metrics  # Impoet SNMP manager functions
+from snmp_manager import discover_devices, configure_device, receive_metrics  # Import SNMP manager functions
 from alerts import send_alert, check_and_send_alerts, send_email_for_alert  # Import alerting functions
-from analyze import analyze_data  # data analysis function
-from config import Config  # configuration detaild
-import logging  # logging for error handling
+from analyze import analyze_data  # Data analysis function
+from config import Config  # Configuration details
+import logging  # Logging for error handling
 from bson import ObjectId  # BSON ObjectId for MongoDB queries
-import time  # time handling
-import threading  # threading for background tasks
+import time  # Time handling
+import threading  # Threading for background tasks
 
 app = Flask(__name__)  # Create Flask application instance
 app.config.from_object(Config)  # Configure Flask app using Config settings
 
-# Initialize MongoDB connection
+# Initialize MongoDB connection once
 init_db(app)
-logging.info("MongoDB connection initialized")  # Log MongoDB connection initialization
-
-logging.basicConfig(level=logging.DEBUG)  # Set logging level to DEBUG
+logging.info("MongoDB connection initialized")
 
 @app.route('/')
 def home():
@@ -103,9 +101,9 @@ def discover():
 
 @app.route('/configure_device/<device_id>', methods=['POST'])
 def configure_device_route(device_id):
-    data = request.json
-    result = configure_device(device_id, data)
-    return jsonify(result), 200
+    data = request.json  # Get JSON data from the request
+    result = configure_device(device_id, data)  # Call configure_device function with device_id and data
+    return jsonify(result), 200  # Return JSON response with configuration result and status code 200
 
 @app.route('/device_data/<device_id>', methods=['GET'])
 def device_data(device_id):
@@ -128,6 +126,5 @@ def periodic_alert_check():
         time.sleep(60)  # Sleep for 60 seconds before checking again
 
 if __name__ == '__main__':
-    threading.Thread(target=periodic_alert_check).start()  # Start a new thread for periodic_alert_check function
-    analyze_data()  # Trigger analyze_data function when app.py is launched
+    threading.Thread(target=periodic_alert_check, daemon=True).start()  # Start a new thread for periodic_alert_check function
     app.run(debug=True)  # Run the Flask application in debug mode

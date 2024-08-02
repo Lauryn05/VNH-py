@@ -45,7 +45,7 @@ def get_snmp_data(oid):
         iterator = getCmd(
             SnmpEngine(),
             CommunityData('public'),
-            UdpTransportTarget(('192.168.1.3', 161)),  # Adjust to the target device IP and port
+            UdpTransportTarget(('172.21.224.1', 161)),  # managed device IP and port
             ContextData(),
             ObjectType(ObjectIdentity(oid))
         )

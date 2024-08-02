@@ -1,6 +1,5 @@
 from alerts import send_alert  # Importing send_alert function from alerts.py
 from db import mongo
-from bson import ObjectId
 
 CPU_THRESHOLD = 80.0  # threshold for CPU usage
 DISK_THRESHOLD = 90.0  # threshold for disk usage (%)
