@@ -7,7 +7,7 @@ connection_string = "mongodb+srv://lauryn:2004@vnh.yitygnq.mongodb.net/?retryWri
 # Connect to MongoDB Atlas
 try:
     client = MongoClient(connection_string)
-    db = client.VNH  # Replace 'VNH' with your database name
+    db = client.VNH 
     print("Connected to MongoDB Atlas successfully!")
 
     # Sample data for each collection
